@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelUserAirport" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserAirport">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="airportId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="airportId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EntitiesUserAirport" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserAirports" EntityType="Self.UserAirport" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PaymentModelStoreContainer" CdmEntityContainer="Entities6">
+    <EntitySetMapping Name="FlightPayments">
+      <EntityTypeMapping TypeName="PaymentModel.FlightPayment">
+        <MappingFragment StoreEntitySet="FlightPayment">
+          <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+          <ScalarProperty Name="Cardno" ColumnName="Cardno" />
+          <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+          <ScalarProperty Name="CVC" ColumnName="CVC" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Postal" ColumnName="Postal" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Dialcode" ColumnName="Dialcode" />
+          <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

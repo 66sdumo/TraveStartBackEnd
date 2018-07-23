@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelRecordStoreContainer" CdmEntityContainer="EntitiesRecord">
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="ModelRecord.Record">
+        <MappingFragment StoreEntitySet="Record">
+          <ScalarProperty Name="RecId" ColumnName="RecId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="deptFlightId" ColumnName="deptFlightId" />
+          <ScalarProperty Name="retFlightId" ColumnName="retFlightId" />
+          <ScalarProperty Name="NumTrav" ColumnName="NumTrav" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

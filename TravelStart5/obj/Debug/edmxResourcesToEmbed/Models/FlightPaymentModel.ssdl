@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelFlightPayment.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FlightPayment">
+    <Key>
+      <PropertyRef Name="paymentID" />
+    </Key>
+    <Property Name="paymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cardno" Type="nvarchar" MaxLength="50" />
+    <Property Name="Expiry" Type="nvarchar" MaxLength="50" />
+    <Property Name="CVC" Type="nvarchar" MaxLength="5" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Postal" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dialcode" Type="nvarchar" MaxLength="5" />
+    <Property Name="Contactno" Type="nvarchar" MaxLength="15" />
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ModelFlightPaymentStoreContainer">
+    <EntitySet Name="FlightPayment" EntityType="Self.FlightPayment" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
