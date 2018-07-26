@@ -120,8 +120,8 @@ namespace TravelStart5.Controllers
 
             smtpClient.Credentials = new System.Net.NetworkCredential()
             {
-                UserName = "66sdumo@gmail.com",
-                Password =  "6653767ZDUmo*"
+                UserName = "YourEmail",
+                Password =  "YourPassword"
             };
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
