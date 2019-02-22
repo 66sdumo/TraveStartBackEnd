@@ -71,8 +71,8 @@ namespace TravelStart5.Controllers
 
             smtpClient.Credentials = new System.Net.NetworkCredential()
             {
-                UserName = "email",
-                Password =  "password"
+                UserName = "YouEmailAddress",
+                Password =  "YourPassword"
             };
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
@@ -87,6 +87,48 @@ namespace TravelStart5.Controllers
 
         }
 
+        /*
+           [AllowAnonymous]
+        public string GetEmail(string title,string fname,string lname,string email,string Airport,string Airline,string Date,string Time,string class1, string Airport2, string Airline2, string Date2, string Time2, string class2)
+        { 
+            MailMessage mailMessage = new MailMessage("66sdumo@gmail.com", "66sdumo@gmail.com");
+            mailMessage.Subject = "Booking Information";
+            mailMessage.Body = "Hi " + title + " " + fname + " " + lname + "\n" +
+                "\n" +
+                "Thank You for using TravelStart.\n " +
+                 "\n"+
+                 "Your departure booking has been confirmed as follows : " +
+                 "\n Airport : " + Airport+
+                 "\n Airline : " + Airline+
+                 "\n Date : " + Date + "  & Time : " + Time +
+                 "\n Class : " + class1
+                  + "\n" 
+                  + "\n" 
+                     + "\n" 
+                   + "\n" +
+                "Your return booking has been confirmed as follows : " +
+                "\n Airport : " + Airport2 +
+                "\n Airline : " + Airline2 +
+                "\n Date : " + Date2 + "  & Time : " + Time2+
+                "\n Class : " + class2;
+
+
+
+
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "YourEmail",
+                Password =  "YourPassword"
+            };
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+
+            return "Sent Successfully to :"+email;
+         
+        }*/
 
 
 
@@ -115,61 +157,3 @@ namespace TravelStart5.Controllers
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-   [AllowAnonymous]
-public string GetEmail(string title,string fname,string lname,string email,string Airport,string Airline,string Date,string Time,string class1, string Airport2, string Airline2, string Date2, string Time2, string class2)
-{ 
-    MailMessage mailMessage = new MailMessage("66sdumo@gmail.com", "66sdumo@gmail.com");
-    mailMessage.Subject = "Booking Information";
-    mailMessage.Body = "Hi " + title + " " + fname + " " + lname + "\n" +
-        "\n" +
-        "Thank You for using TravelStart.\n " +
-         "\n"+
-         "Your departure booking has been confirmed as follows : " +
-         "\n Airport : " + Airport+
-         "\n Airline : " + Airline+
-         "\n Date : " + Date + "  & Time : " + Time +
-         "\n Class : " + class1
-          + "\n" 
-          + "\n" 
-             + "\n" 
-           + "\n" +
-        "Your return booking has been confirmed as follows : " +
-        "\n Airport : " + Airport2 +
-        "\n Airline : " + Airline2 +
-        "\n Date : " + Date2 + "  & Time : " + Time2+
-        "\n Class : " + class2;
-
-
-
-
-
-    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-
-    smtpClient.Credentials = new System.Net.NetworkCredential()
-    {
-        UserName = "66sdumo@gmail.com",
-        Password =  "6653767ZDUmo*"
-    };
-    smtpClient.EnableSsl = true;
-    smtpClient.Send(mailMessage);
-
-    return "Sent Successfully to :"+email;
-
-}*/
