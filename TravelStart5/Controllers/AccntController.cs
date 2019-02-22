@@ -13,7 +13,7 @@ namespace TravelStart5.Controllers
 {
     public class AccntController : ApiController
     {
-
+        //Registering a user
         [Route("api/User/Register")]
         [HttpPost]
         [AllowAnonymous]
@@ -32,10 +32,12 @@ namespace TravelStart5.Controllers
                 RequiredLength = 3
             };
             IdentityResult result = manager.Create(user, model.Password);
-            manager.AddToRoles(user.Id, model.Roles);
+            manager.AddToRoles(user.Id, model.Roles);//Add userId & role to ROLE
             return result;
         }
 
+
+        //Userclaims use this to get recently authenticated || authorized user 
         [HttpGet]
         [Route("api/GetUserClaims")]
         [AllowAnonymous]
@@ -86,7 +88,7 @@ namespace TravelStart5.Controllers
         [Route("api/User/put")]
         [HttpPut]
         [AllowAnonymous]
-        public void Put(string Uname, [FromBody]AccountModel acount)
+        public void PutUser(string Uname, [FromBody]AccountModel acount)
         {
             using (ApplicationDbContext entities = new ApplicationDbContext())
             {

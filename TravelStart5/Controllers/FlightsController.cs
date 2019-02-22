@@ -23,45 +23,178 @@ namespace TravelStart5.Controllers
               return db.Flights;
           }
 
-        /* 
-          [AllowAnonymous]
-          public IQueryable<Flight> GetFlights(string dept)
-          {
-              var flight = db.Flights.Where(x => x.Airport == dept);
-              if (flight == null)
-              {
-                  return null;
-              }
-              return flight;
-          }
 
-          [AllowAnonymous]
-          public IQueryable<Flight> GetRetFlights(string rturn)
-          {
-              var flight = db.Flights.Where(x => x.Airport == rturn);
-              if (flight == null)
-              {
-                  return null;
-              }
-              return flight;
-          }
+        [AllowAnonymous]
+
+        public IQueryable<Flight> GetFlight(string dept,string deptDAte)
+        {
+            var user = db.Flights.Where(x => x.Airport == dept && x.Date == deptDAte);
+
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
+
+        [AllowAnonymous]
+
+        public IQueryable<Flight> GetRetFlight(string rturn, string rturnDate)
+        {
+            var user = db.Flights.Where(x => x.Airport == rturn && x.Date == rturnDate);
+
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
 
 
-        
+        // GET: api/Flights/5
+        [ResponseType(typeof(Flight))]
+        public IHttpActionResult GetFlight(int id)
+        {
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
+            {
+                return NotFound();
+            }
 
-          [AllowAnonymous]
-          public IQueryable<Flight> GetDate(string date)
-          {
-              var Fdate = db.Flights.Where(x => x.Date == date);
-              if (Fdate == null)
-              {
-                  return null;
-              }
-              return Fdate;
-          }
+            return Ok(flight);
+        }
 
-      */
+        // PUT: api/Flights/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutFlight(int id, Flight flight)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            if (id != flight.FlightId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(flight).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FlightExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Flights
+        [AllowAnonymous]
+        [ResponseType(typeof(Flight))]
+        public IHttpActionResult PostFlight(Flight flight)
+        {
+
+            db.Flights.Add(flight);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = flight.FlightId }, flight);
+        }
+
+        // DELETE: api/Flights/5
+        [ResponseType(typeof(Flight))]
+        public IHttpActionResult DeleteFlight(int id)
+        {
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
+            {
+                return NotFound();
+            }
+
+            db.Flights.Remove(flight);
+            db.SaveChanges();
+
+            return Ok(flight);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool FlightExists(int id)
+        {
+            return db.Flights.Count(e => e.FlightId == id) > 0;
+        }
+    }
+
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+     [AllowAnonymous]
+     public IQueryable<Flight> GetFlights(string dept)
+     {
+         var flight = db.Flights.Where(x => x.Airport == dept);
+         if (flight == null)
+         {
+             return null;
+         }
+         return flight;
+     }
+
+     [AllowAnonymous]
+     public IQueryable<Flight> GetRetFlights(string rturn)
+     {
+         var flight = db.Flights.Where(x => x.Airport == rturn);
+         if (flight == null)
+         {
+             return null;
+         }
+         return flight;
+     }
+
+
+
+
+     [AllowAnonymous]
+     public IQueryable<Flight> GetDate(string date)
+     {
+         var Fdate = db.Flights.Where(x => x.Date == date);
+         if (Fdate == null)
+         {
+             return null;
+         }
+         return Fdate;
+     }
+
+
+    
 
         public static bool[] seats;
         public static int totAssignLeft;
@@ -201,127 +334,4 @@ namespace TravelStart5.Controllers
             return index;
         }
 
-
-
-
-
-        [AllowAnonymous]
-
-        public IQueryable<Flight> GetFlight(string dept,string deptDAte)
-        {
-            var user = db.Flights.Where(x => x.Airport == dept && x.Date == deptDAte);
-
-            if (user == null)
-            {
-                return null;
-            }
-            return user;
-        }
-
-        [AllowAnonymous]
-
-        public IQueryable<Flight> GetRetFlight(string rturn, string rturnDate)
-        {
-            var user = db.Flights.Where(x => x.Airport == rturn && x.Date == rturnDate);
-
-            if (user == null)
-            {
-                return null;
-            }
-            return user;
-        }
-
-
-        // GET: api/Flights/5
-        [ResponseType(typeof(Flight))]
-        public IHttpActionResult GetFlight(int id)
-        {
-            Flight flight = db.Flights.Find(id);
-            if (flight == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(flight);
-        }
-
-        // PUT: api/Flights/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutFlight(int id, Flight flight)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != flight.FlightId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(flight).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FlightExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Flights
-        [AllowAnonymous]
-        [ResponseType(typeof(Flight))]
-        public IHttpActionResult PostFlight(Flight flight)
-        {
-
-            db.Flights.Add(flight);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = flight.FlightId }, flight);
-        }
-
-        // DELETE: api/Flights/5
-        [ResponseType(typeof(Flight))]
-        public IHttpActionResult DeleteFlight(int id)
-        {
-            Flight flight = db.Flights.Find(id);
-            if (flight == null)
-            {
-                return NotFound();
-            }
-
-            db.Flights.Remove(flight);
-            db.SaveChanges();
-
-            return Ok(flight);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool FlightExists(int id)
-        {
-            return db.Flights.Count(e => e.FlightId == id) > 0;
-        }
-    }
-
- 
-}
+*/

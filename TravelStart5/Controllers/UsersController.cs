@@ -23,8 +23,8 @@ namespace TravelStart5.Controllers
         }
 
           [AllowAnonymous]
-          public IQueryable<User> GetRetFlights(string Uname)
-          {
+          public IQueryable<User> GetUserss(string Uname)
+        {
               var name = db.Users.Where(x => x.UserName == Uname);
               if (name == null)
               {
@@ -33,7 +33,7 @@ namespace TravelStart5.Controllers
               return name;
           }
       
-
+        
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
